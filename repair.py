@@ -69,6 +69,7 @@ for upward_file in upward_file_list:
 log(f"SCE-TTS `{detected_version}` Version Detected.")
 if detected_version == "None" or not_founded:
 	log("Is this script located in the 'audio_files' folder?", "Error")
+	os._exit(1)
 
 folder_list = os.listdir('.')
 if (len(folder_list) - 1) == 0:
@@ -78,8 +79,9 @@ for folder in folder_list:
 	if folder == os.path.basename(__file__):
 		continue
 
-	log(f"Thread for folder `{folder}` was started.")
-	t = Worker(folder)
-	t.start()
+	if os.path.isdir(folder):
+		log(f"Thread for folder `{folder}` was started.")
+		t = Worker(folder)
+		t.start()
 
 log("All Thread was started.")
