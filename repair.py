@@ -1,8 +1,12 @@
 import os
 import time
+import datetime
 import threading
 
-tag = '[SCE-TTS-REPAIR] '
+tag = '[STR] '
+
+def log(txt, level="Info"):
+	print(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] [{str(level)}] {tag} {str(txt)}')
 
 class Worker(threading.Thread):
 	"""docstring for Worker"""
@@ -48,9 +52,6 @@ class Worker(threading.Thread):
 					f.close()
 					log("Saved current state file data.")
 		
-
-def log(txt, level="Info"):
-	print('['+str(level)+'] '+tag+str(txt))
 
 log("SCE-TTS-Repair has been started!")
 
