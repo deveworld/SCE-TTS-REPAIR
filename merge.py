@@ -1,10 +1,11 @@
 import os
 import time
+import datetime
 
-tag = '[SCE-TTS-REPAIR-MERGE] '
+tag = '[STR-M] '
 		
 def log(txt, level="Info"):
-	print('['+str(level)+'] '+tag+str(txt))
+	print(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] [{str(level)}] {tag} {str(txt)}')
 
 log("SCE-TTS-Repair-Merge has been started!")
 
