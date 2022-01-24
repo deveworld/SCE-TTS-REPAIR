@@ -60,16 +60,18 @@ if os.path.exists(folder):
 		f.close()
 
 		f = open(merge_metadata, "w", encoding="utf-8")
-
+		data = ""
+		
 		for x in range(int(i)-1):
 			x += 1
 			metadata = f'{folder}-metadata_{str(x)}.txt'
 			metadata_file = open(os.path.join(abs_folder, metadata), "r", encoding="utf-8")
-			data = metadata_file.read()
-			log(f"`{metadata}` file readed.")
+			data += metadata_file.read()
+			log(f"`{metadata}` file readed and data writed.")
 			metadata_file.close()
-			f.write(data)
-			log(f"File writed.")
+
+		f.write(data)
+		log(f"Data was writed at file.")
 		f.close()
 	else:
 		log("Current State File isn't Exists.", "Error")
